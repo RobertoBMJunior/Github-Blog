@@ -1,10 +1,10 @@
 import styled from "styled-components";
 
-export const HomeContainer = styled.div`
-    padding: 0 18rem;
+export const HomeContainer = styled.article`
+    padding: 0 18rem 3rem;
 
     form{
-        margin-top: 4.5em;
+        margin: 4.5em 0 3rem;
 
         &>div{
             display: flex;
@@ -18,7 +18,7 @@ export const HomeContainer = styled.div`
             }
 
             span:last-child{
-                color: ${props => props.theme["base-span"]}
+                color: ${props => props.theme["base-span"]};
             }
         }
 
@@ -27,8 +27,16 @@ export const HomeContainer = styled.div`
             padding: 0.75rem 1rem;
             border-radius: 6px;
             background-color: ${props => props.theme["base-input"]};
+            color: ${props => props.theme["blue"]} !important;
 
             border: 1px solid ${props => props.theme["base-border"]};
         }
+    }
+
+    article{
+        display: flex;
+        gap: 2rem;
+
+        flex-wrap: wrap;
     }
 `

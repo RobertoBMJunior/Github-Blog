@@ -1,4 +1,5 @@
 import { Profile } from "../../components/Profile";
+import { Publication } from "../../components/Publication";
 import { HomeContainer } from "./styles";
 
 export function Home () {
@@ -34,6 +35,14 @@ export function Home () {
                 </div>
                 <input type="text" placeholder="Buscar conteúdo"/>
             </form>
+            <article>
+                <Publication/>
+                <Publication/>
+                <Publication/>
+                <Publication/>
+                <Publication/>
+
+            </article>
         </HomeContainer>
     )
 }
