@@ -1,3 +1,6 @@
+import { Profile } from "../../components/Profile";
+import { HomeContainer } from "./styles";
+
 export function Home () {
 
     // const urlGithub = 'https://api.github.com'
@@ -22,6 +25,15 @@ export function Home () {
 
 
     return (
-        <h1>Home</h1>
+        <HomeContainer>
+            <Profile/>
+            <form action="">
+                <div>
+                    <span>Publicações</span>
+                    <span>6 publicações</span>
+                </div>
+                <input type="text" placeholder="Buscar conteúdo"/>
+            </form>
+        </HomeContainer>
     )
 }
