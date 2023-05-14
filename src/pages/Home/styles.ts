@@ -27,7 +27,7 @@ export const HomeContainer = styled.article`
             padding: 0.75rem 1rem;
             border-radius: 6px;
             background-color: ${props => props.theme["base-input"]};
-            color: ${props => props.theme["blue"]} !important;
+            color: ${props => props.theme["blue"]};
 
             border: 1px solid ${props => props.theme["base-border"]};
         }

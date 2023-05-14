@@ -53,6 +53,7 @@ export const ProfileContainer = styled.div`
             display: flex;
             align-items: center;
             gap: 0.5rem;
+            color: ${props => props.theme["base-subtitile"]}
 
             svg{
                 color: ${props => props.theme["base-label"]}

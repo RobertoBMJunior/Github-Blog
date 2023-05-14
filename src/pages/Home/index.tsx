@@ -39,8 +39,7 @@ export function Home () {
                 <Publication/>
                 <Publication/>
                 <Publication/>
-                <Publication/>
-                <Publication/>
+             
 
             </article>
         </HomeContainer>
