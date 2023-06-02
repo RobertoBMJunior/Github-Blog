@@ -1,27 +1,35 @@
+import { useEffect, useState } from "react";
 import { Profile } from "../../components/Profile";
 import { Publication } from "../../components/Publication";
 import { HomeContainer } from "./styles";
 
+
+interface SearchIssues {
+    title: string
+    created_at: Date
+    body: string
+    number: number
+}
+
 export function Home () {
+    const [ search, setSearch] = useState<SearchIssues[]>([])
 
-    // const urlGithub = 'https://api.github.com'
+    //Pesquisando por vazio para vir tudo
+    const urlSearch = 'https://api.github.com/search/issues?q=%20repo:RobertoBMJunior/Github-Blog' 
 
-    // const user = '/users/robertobmjunior'
 
-    // const search = '/search/issues?q='
-    // const repo = 'repo:RobertoBMJunior/Github-Blog'
-    // const texto = 'Uchiha Madara'
-    
-    // const issues = '/repos/RobertoBMJunior/Github-Blog/issues/1'
+    async function getSearch() {
+        const response = await fetch(urlSearch)
 
-    // fetch(urlGithub + user).then(response => response.json())
-    // .then(data => console.log(data))
+        const data = await response.json()
 
-    // fetch(urlGithub + search + texto + repo).then(response => response.json())
-    // .then(data => console.log(data))
+        setSearch(data.items)
 
-    // fetch(urlGithub + issues).then(response => response.json())
-    // .then(data => console.log(data))
+    }
+
+    useEffect(()=> {
+        getSearch()
+    },[])
 
 
 
@@ -31,15 +39,25 @@ export function Home () {
             <form action="">
                 <div>
                     <span>Publicações</span>
-                    <span>6 publicações</span>
+                    <span>{`${search.length} publicações`}</span>
                 </div>
                 <input type="text" placeholder="Buscar conteúdo"/>
             </form>
             <article>
-                <Publication/>
-                <Publication/>
-                <Publication/>
-             
+                {search.map(issue => {
+                    const title = issue.title
+                    
+                    const createdAt = new Date(issue.created_at).getTime() //passando pra  milisegundos
+                    const date = new Date(createdAt)
+
+
+                    const body = issue.body
+                    const number = issue.number
+
+                    return (
+                        <Publication key={number} title={title} createdAt={date} body={body} number={number}/>
+                    )
+                })}         
 
             </article>
         </HomeContainer>

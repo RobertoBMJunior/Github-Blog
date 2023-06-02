@@ -31,5 +31,10 @@ export const PublicationContainer = styled.section`
     div{
         height: 130px;
         overflow: hidden;
+
+        code{
+            display: flex;
+            flex-direction: column;
+        }
     }
 `

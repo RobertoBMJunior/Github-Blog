@@ -1,14 +1,49 @@
 import { ProfileContainer } from "./styles";
-import Avatar from '../../images/avatar.png'
+// import Avatar from '../../images/avatar.png'
 import { Buildings, GithubLogo, Link, Users } from "@phosphor-icons/react";
+import { useEffect, useState } from "react";
+
+interface User {
+    nome: string,
+    bio: string,
+    login: string,
+    company: string,
+    followers: number,
+    avatarUrl: string
+}
 
 export function Profile () {
+    const [ dataUser, setDataUser] = useState<User>()
+
+    const urlUsers = 'https://api.github.com/users/robertobmjunior'
+
+    async function getData() {
+        const response = await fetch(urlUsers)
+
+        const data = await response.json()
+
+        const dados = {
+            nome: data.name,
+            bio: data.bio,
+            login: data.login,
+            company: data.company,
+            followers: data.followers,
+            avatarUrl: data.avatar_url,
+        }
+
+        setDataUser(dados)
+    }
+
+    useEffect(()=> {
+        getData()
+    },[])
+
     return (
         <ProfileContainer>
-            <img src={Avatar} alt="" />
+            <img src={dataUser?.avatarUrl} alt="" />
             <div className="about">
                 <div className="name_and_link">
-                    <h1>Cameron Williamson</h1>
+                    <h1>{dataUser?.nome}</h1>
                     
                     <a className="githubLink" href="https://github.com/RobertoBMJunior/Github-Blog">
                         <Link />
@@ -17,19 +52,25 @@ export function Profile () {
                         </span>
                     </a>
                 </div>
-                <p>Tristique volutpat pulvinar vel massa, pellentesque egestas. Eu viverra massa quam dignissim aenean malesuada suscipit. Nunc, volutpat pulvinar vel mass.</p>
+                <p>{dataUser?.bio}</p>
                 <div className="informations">
                     <div>
                         <GithubLogo size={18} weight="fill"/>
-                        <span>cameronwll</span>
+                        <span>{dataUser?.login}</span>
                     </div>
-                    <div>
-                        <Buildings size={18} weight="fill"/>
-                        <span>Rocketseat</span>
-                    </div>
+                    {dataUser?.company 
+                        ? 
+                        <div>
+                            <Buildings size={18} weight="fill"/>
+                            <span>{dataUser?.company}</span>
+                        </div> 
+                        : 
+                        null 
+                    }
+                    
                     <div>
                         <Users size={18} weight="fill"/>
-                        <span>32 seguidores</span>
+                        <span>{`${dataUser?.followers} seguidores`}</span>
                     </div>
                 </div>
             </div>

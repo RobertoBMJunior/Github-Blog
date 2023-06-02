@@ -15,7 +15,7 @@ export const GloBalStyle = createGlobalStyle`
         background: ${props => props.theme["base-background"]};
     }
 
-    body, input, button{
+    body, input, button, a{
         font-family: 'Nunito', sans-serif;
         font-size: 1rem;
         font-weight: 400;

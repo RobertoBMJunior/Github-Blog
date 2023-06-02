@@ -1,36 +1,57 @@
 import { ArrowCircleUpRight, CaretLeft, ChatCircleDots, GithubLogo, Watch } from "@phosphor-icons/react";
 import { HeaderPostContainer } from "./styles";
+import {NavLink} from 'react-router-dom'
+import { formatDistance} from 'date-fns';
+import ptBR from "date-fns/locale/pt-BR";
 
-export function HeaderPost () {
+
+interface HeaderPostProps {
+    title: string
+    login: string
+    created_at: Date
+    comments: number
+    number: number
+}
+
+const dateFormatter = new Intl.DateTimeFormat("pt-BR")
+
+export function HeaderPost ({title,login,created_at,comments,number}:HeaderPostProps) {
+    // const createdAt = created_at
+    const timestamp = new Date(created_at);
+    const timeToNow = formatDistance(Date.now(), timestamp, {addSuffix: false, locale: ptBR })
+
     return(
         <HeaderPostContainer>
             <header>
-                <button>
+                <NavLink to='/'>
                     <CaretLeft size={18} weight="fill"/>
                     <span>Voltar</span>
-                </button>
-                <a href="https://github.com/RobertoBMJunior/Github-Blog">
+                </NavLink>
+                <a href={`https://github.com/RobertoBMJunior/Github-Blog/issues/${number}`} target="_blank">
                     <span>Ver no github</span>
                     <ArrowCircleUpRight size={18} weight="fill"/>
                 </a>
             </header>
 
             <h2>
-                JavaScript data types and data structures
+                {title}
             </h2>
 
             <div className="informations">
                 <div>
                     <GithubLogo size={18} weight="fill"/>
-                    <span>cameronwll</span>
+                    <span>{login}</span>
                 </div>
                 <div>
                     <Watch size={18} weight="fill"/>
-                    <span>Há 1 dia</span>
+                    <span title={`Publicado em ${dateFormatter.format(created_at)}`}>
+                        {/* {dateFormatter.format(created_at)} */}
+                        {`Há ${timeToNow}`}
+                    </span>
                 </div>
                 <div>
                     <ChatCircleDots size={18} weight="fill"/>
-                    <span>5 comentários</span>
+                    <span>{`${comments} comentários`}</span>
                 </div>
             </div>
         </HeaderPostContainer>

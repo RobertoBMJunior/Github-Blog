@@ -13,9 +13,19 @@ export const ProfileContainer = styled.div`
     display: flex;
     gap: 2rem;
 
+    img{
+        width: 148px;
+        border-radius: 8px;
+    }
+
     .about{
+        width: 100%;
+        height: 148px;
+        display: flex;
+        flex-direction: column;
 
         .name_and_link{
+            width: 100%;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -40,24 +50,26 @@ export const ProfileContainer = styled.div`
 
 
         p{
-            margin: 0.5rem 0 1.5rem 0;
+            margin: 0.5rem 0 0;
         }
-    }
-
-    .informations {
-        display: flex;
-        gap: 1.5rem;
-        align-items: center;
-
-        div{
+        
+        .informations {
             display: flex;
+            gap: 1.5rem;
             align-items: center;
-            gap: 0.5rem;
-            color: ${props => props.theme["base-subtitile"]}
-
-            svg{
-                color: ${props => props.theme["base-label"]}
+            margin-top: auto;
+    
+            div{
+                display: flex;
+                align-items: center;
+                gap: 0.5rem;
+                color: ${props => props.theme["base-subtitile"]}
+    
+                svg{
+                    color: ${props => props.theme["base-label"]}
+                }
             }
         }
     }
+
 `

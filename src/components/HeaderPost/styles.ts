@@ -15,7 +15,7 @@ export const HeaderPostContainer = styled.nav`
         align-items: center;
         justify-content: space-between;
 
-        &>button, &>a{
+        &>a{
             display: flex;
             align-items: center;
             gap: 0.4rem;

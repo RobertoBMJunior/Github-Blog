@@ -1,14 +1,41 @@
 import { PublicationContainer } from "./styles";
+import { useNavigate } from "react-router-dom"
+import { formatDistance} from 'date-fns';
+import ptBR from "date-fns/locale/pt-BR";
 
-export function Publication() {
+const dateFormatter = new Intl.DateTimeFormat("pt-BR")
+
+interface PublicationProps {
+    title: string
+    createdAt: Date
+    body: string
+    number: number
+}
+
+export function Publication({title,createdAt,body,number}:PublicationProps) {
+    const timestamp = new Date(createdAt);
+    const timeToNow = formatDistance(Date.now(), timestamp, {addSuffix: false, locale: ptBR })
+
+    const navigate = useNavigate()
+
+    function handleViewPost () {
+        const url = `/post/${number}`
+        // window.location.assign(url)
+        return navigate(url)
+    }
+
     return(
-        <PublicationContainer>
+        <PublicationContainer onClick={handleViewPost}>
             <header>
-                <h1>JavaScript data types and data structures</h1>
-                <span>Há 1 dia</span>
+                <h1>{title}</h1>
+                <span title={`Publicado em ${dateFormatter.format(createdAt)}`}>
+                    {`Há ${timeToNow}`}
+                </span>
             </header>
             <div>
-                Programming languages all have built-in data structures, but these often differ from one language to another. This article attempts to list the built-in data structures available in JavaScript and what properties they have. These can be used to build other data structures. Wherever possible, comparisons with other languages are drawn.
+                <code>
+                    {body}
+                </code>
             </div>
         </PublicationContainer>
     )
