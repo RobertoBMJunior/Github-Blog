@@ -1,6 +1,6 @@
 import { ProfileContainer } from "./styles";
 // import Avatar from '../../images/avatar.png'
-import { Buildings, GithubLogo, Link, Users } from "@phosphor-icons/react";
+import { Buildings, GithubLogo, Link, Swap, Users } from "@phosphor-icons/react";
 import { useEffect, useState } from "react";
 
 interface User {
@@ -45,7 +45,7 @@ export function Profile () {
                 <div className="name_and_link">
                     <h1>{dataUser?.nome}</h1>
                     
-                    <a className="githubLink" href="https://github.com/RobertoBMJunior/Github-Blog">
+                    <a className="githubLink" href="https://github.com/RobertoBMJunior/Github-Blog" target="_blank">
                         <Link />
                         <span>
                             GITHUB
@@ -71,6 +71,11 @@ export function Profile () {
                     <div>
                         <Users size={18} weight="fill"/>
                         <span>{`${dataUser?.followers} seguidores`}</span>
+                    </div>
+
+                    <div>
+                        <Swap size={18} weight="fill"/>
+                        <span>Trocar Usuario/Repositório</span>
                     </div>
                 </div>
             </div>

@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { HeaderPost } from "../../components/HeaderPost";
 import { PostContainer } from "./styles";
 import {useParams} from 'react-router-dom'
+import ReactMarkdown from 'react-markdown'
+
 
 interface Issue {
     title: string
@@ -24,7 +26,8 @@ export function Post () {
     })
 
     //Pesquisando pelo número da issue
-    const urlIssue = `https://api.github.com/repos/RobertoBMJunior/Github-Blog/issues/${issueNumber}`
+    // const urlIssue = `https://api.github.com/repos/RobertoBMJunior/Github-Blog/issues/${issueNumber}`
+    const urlIssue = `https://api.github.com/repos/florinpop17/app-ideas/issues/${issueNumber}`
 
 
     async function getIssue() {
@@ -60,7 +63,8 @@ export function Post () {
             <HeaderPost title={issue?.title} login={issue?.login} created_at={issue?.created_at} comments={issue?.comments} number={issue?.number} />
             <article>
                 <div>
-                    {issue?.body}
+                    {/* {issue?.body} */}
+                    <ReactMarkdown>{issue.body}</ReactMarkdown>
                 </div>
 
             </article>

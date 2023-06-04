@@ -5,5 +5,10 @@ export const PostContainer = styled.article`
 
     article{
         padding: 2.5rem 2rem;
+        overflow: hidden;
+
+        img{
+            width: 400px;
+        }
     }
 `

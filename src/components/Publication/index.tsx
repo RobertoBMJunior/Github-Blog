@@ -2,6 +2,7 @@ import { PublicationContainer } from "./styles";
 import { useNavigate } from "react-router-dom"
 import { formatDistance} from 'date-fns';
 import ptBR from "date-fns/locale/pt-BR";
+import ReactMarkdown from 'react-markdown'
 
 const dateFormatter = new Intl.DateTimeFormat("pt-BR")
 
@@ -20,7 +21,7 @@ export function Publication({title,createdAt,body,number}:PublicationProps) {
 
     function handleViewPost () {
         const url = `/post/${number}`
-        // window.location.assign(url)
+        // window.location.assign(url) //Modo alternativo de redirecionar
         return navigate(url)
     }
 
@@ -33,9 +34,7 @@ export function Publication({title,createdAt,body,number}:PublicationProps) {
                 </span>
             </header>
             <div>
-                <code>
-                    {body}
-                </code>
+                <ReactMarkdown>{body}</ReactMarkdown>
             </div>
         </PublicationContainer>
     )
