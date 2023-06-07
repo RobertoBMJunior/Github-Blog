@@ -1,7 +1,10 @@
 import { ProfileContainer } from "./styles";
 // import Avatar from '../../images/avatar.png'
-import { Buildings, GithubLogo, Link, Swap, Users } from "@phosphor-icons/react";
-import { useEffect, useState } from "react";
+import { Buildings, FolderOpen, GithubLogo, Link, Swap, Users } from "@phosphor-icons/react";
+import { useContext, useEffect, useState } from "react";
+import * as Dialog from '@radix-ui/react-dialog';
+import { Modal } from "../Modal";
+import { GithubContext } from "../../Context";
 
 interface User {
     nome: string,
@@ -13,9 +16,11 @@ interface User {
 }
 
 export function Profile () {
+    const {userName, repo} = useContext(GithubContext)
+
     const [ dataUser, setDataUser] = useState<User>()
 
-    const urlUsers = 'https://api.github.com/users/robertobmjunior'
+    const urlUsers = `https://api.github.com/users/${userName}`
 
     async function getData() {
         const response = await fetch(urlUsers)
@@ -36,7 +41,7 @@ export function Profile () {
 
     useEffect(()=> {
         getData()
-    },[])
+    },[userName])
 
     return (
         <ProfileContainer>
@@ -45,7 +50,7 @@ export function Profile () {
                 <div className="name_and_link">
                     <h1>{dataUser?.nome}</h1>
                     
-                    <a className="githubLink" href="https://github.com/RobertoBMJunior/Github-Blog" target="_blank">
+                    <a className="githubLink" href={`https://github.com/${userName}`} target="_blank">
                         <Link />
                         <span>
                             GITHUB
@@ -54,29 +59,42 @@ export function Profile () {
                 </div>
                 <p>{dataUser?.bio}</p>
                 <div className="informations">
-                    <div>
-                        <GithubLogo size={18} weight="fill"/>
-                        <span>{dataUser?.login}</span>
-                    </div>
-                    {dataUser?.company 
-                        ? 
+                    <article>
+                        <div>
+                            <GithubLogo size={18} weight="fill"/>
+                            <span>{dataUser?.login}</span>
+                        </div>
+                      
+                        {dataUser?.company 
+                            ? 
                         <div>
                             <Buildings size={18} weight="fill"/>
                             <span>{dataUser?.company}</span>
-                        </div> 
+                        </div>  
                         : 
-                        null 
-                    }
-                    
-                    <div>
-                        <Users size={18} weight="fill"/>
-                        <span>{`${dataUser?.followers} seguidores`}</span>
-                    </div>
+                        null }
+                        
+                       
+                        
+                        <div>
+                            <Users size={18} weight="fill"/>
+                            <span>{`${dataUser?.followers} seguidores`}</span>
+                        </div>
 
-                    <div>
-                        <Swap size={18} weight="fill"/>
-                        <span>Trocar Usuario/Repositório</span>
-                    </div>
+                    </article>
+
+                    <Dialog.Root>
+                        <Dialog.Trigger asChild >
+
+                            <button className="swap">
+                                <Swap size={18} weight="fill"/>
+                                <span>Trocar Usuario/Repositório</span>
+                            </button>
+                        </Dialog.Trigger>
+                        
+                        <Modal/>
+                    </Dialog.Root>
+                    
                 </div>
             </div>
         </ProfileContainer>

@@ -18,7 +18,7 @@ export function DefaultLayout () {
                 <span>
                     Made by <strong>Roberto Barbosa de Melo Junior</strong> 
                 </span>
-            </footer>
+            </footer>            
         </ContainerLayout>
     )
 }

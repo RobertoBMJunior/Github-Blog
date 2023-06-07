@@ -31,6 +31,17 @@ export const HomeContainer = styled.article`
 
             border: 1px solid ${props => props.theme["base-border"]};
         }
+
+        .repo{
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: ${props => props.theme["base-subtitile"]}
+    
+            svg{
+                color: ${props => props.theme["base-label"]}
+            }
+        }
     }
 
     article{

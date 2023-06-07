@@ -55,7 +55,8 @@ export const ProfileContainer = styled.div`
         
         .informations {
             display: flex;
-            gap: 1.5rem;
+            justify-content: space-between;
+            gap: 1rem;
             align-items: center;
             margin-top: auto;
     
@@ -69,6 +70,38 @@ export const ProfileContainer = styled.div`
                     color: ${props => props.theme["base-label"]}
                 }
             }
+
+            //-----------------------------------------------------------------------
+
+            .swap{
+                display: flex;
+                align-items: center;
+                gap: 0.5rem;
+
+                color: ${props => props.theme["blue"]};
+                text-decoration: none;
+                background: none;
+                border: none;
+                cursor: pointer;
+            }
+
+
+            
+            form{
+                display: flex;
+                flex-direction: column;
+                margin-top: -2rem;
+
+                input{
+                    wdith: 400px;
+                    color: ${props => props.theme["base-text"]};
+                }
+
+                button{
+                    color: ${props => props.theme["blue"]};
+                }
+            }
+          
         }
     }
 

@@ -3,6 +3,8 @@ import { HeaderPostContainer } from "./styles";
 import {NavLink} from 'react-router-dom'
 import { formatDistance} from 'date-fns';
 import ptBR from "date-fns/locale/pt-BR";
+import { useContext } from "react";
+import { GithubContext } from "../../Context";
 
 
 interface HeaderPostProps {
@@ -16,7 +18,8 @@ interface HeaderPostProps {
 const dateFormatter = new Intl.DateTimeFormat("pt-BR")
 
 export function HeaderPost ({title,login,created_at,comments,number}:HeaderPostProps) {
-    // const createdAt = created_at
+    const {userName,repo} = useContext(GithubContext)
+
     const timestamp = new Date(created_at);
     const timeToNow = formatDistance(Date.now(), timestamp, {addSuffix: false, locale: ptBR })
 
@@ -27,7 +30,7 @@ export function HeaderPost ({title,login,created_at,comments,number}:HeaderPostP
                     <CaretLeft size={18} weight="fill"/>
                     <span>Voltar</span>
                 </NavLink>
-                <a href={`https://github.com/RobertoBMJunior/Github-Blog/issues/${number}`} target="_blank">
+                <a href={`https://github.com/${userName}/${repo}/issues/${number}`} target="_blank">
                     <span>Ver no github</span>
                     <ArrowCircleUpRight size={18} weight="fill"/>
                 </a>

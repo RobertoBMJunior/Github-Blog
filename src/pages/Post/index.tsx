@@ -1,8 +1,9 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { HeaderPost } from "../../components/HeaderPost";
 import { PostContainer } from "./styles";
 import {useParams} from 'react-router-dom'
 import ReactMarkdown from 'react-markdown'
+import { GithubContext } from "../../Context";
 
 
 interface Issue {
@@ -15,6 +16,8 @@ interface Issue {
 }
 
 export function Post () {
+    const {userName,repo} = useContext(GithubContext)
+
     const {issueNumber} = useParams()
     const [ issue, setIssue] = useState<Issue>({
         title: '',
@@ -27,16 +30,15 @@ export function Post () {
 
     //Pesquisando pelo número da issue
     // const urlIssue = `https://api.github.com/repos/RobertoBMJunior/Github-Blog/issues/${issueNumber}`
-    const urlIssue = `https://api.github.com/repos/florinpop17/app-ideas/issues/${issueNumber}`
+    const urlIssue = `https://api.github.com/repos/${userName}/${repo}/issues/${issueNumber}`
 
 
     async function getIssue() {
         const response = await fetch(urlIssue)
 
         const data = await response.json()
-        // const final = '.642Z'
+        
         const createdAt = new Date(data.created_at).getTime() //passando pra  milisegundos
-        // const createdAt = new Date(data.created_at.slice(0, data.created_at.length - 1) + final).getTime()
 
         const date = new Date(createdAt)
 
@@ -55,7 +57,7 @@ export function Post () {
 
     useEffect(()=> {
         getIssue()
-    })
+    },[userName,repo])
     
 
     return (

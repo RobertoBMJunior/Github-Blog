@@ -1,10 +1,12 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Profile } from "../../components/Profile";
 import { Publication } from "../../components/Publication";
 import { HomeContainer } from "./styles";
 import * as z from 'zod'
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from 'react-hook-form'
+import { GithubContext } from "../../Context";
+import { FolderOpen } from "@phosphor-icons/react";
 
 const searchFormSchema = z.object({
     query: z.string(),
@@ -21,6 +23,7 @@ interface SearchIssues {
 }
 
 export function Home () {
+    const {userName,repo} = useContext(GithubContext)
     const [ search, setSearch] = useState<SearchIssues[]>([])
 
     const { 
@@ -37,7 +40,7 @@ export function Home () {
     async function getSearch( query : string ) {
          //Na pimeira renderização o query é uma string vazia
         // const urlSearch = `https://api.github.com/search/issues?q=${query}repo:RobertoBMJunior/Github-Blog`
-        const urlSearch = `https://api.github.com/search/issues?q=${query}repo:florinpop17/app-ideas`
+        const urlSearch = `https://api.github.com/search/issues?q=${query}repo:${userName}/${repo}`
 
 
         const response = await fetch(urlSearch)
@@ -51,7 +54,7 @@ export function Home () {
 
     useEffect(()=> {
         getSearch('')
-    },[])
+    },[userName,repo])
 
 
     async function handleSearchIssue (data: SearchFormInputs) {
@@ -63,8 +66,12 @@ export function Home () {
             <Profile/>
             <form action="" onSubmit={handleSubmit(handleSearchIssue)}>
                 <div>
-                    <span>Publicações</span>
-                    <span>{`${search.length == null || search.length == undefined ? 0 : search.length} publicações`}</span>
+                    {/* <span>Publicações</span> */}
+                    <div className="repo">
+                        <FolderOpen size={18} weight="fill"/>
+                        <span>{repo}</span>
+                    </div>
+                    <span>{`${search.length == null || search.length == undefined ? 0 : search.length} issues`}</span>
                 </div>
                 <input type="text" placeholder="Buscar conteúdo" {...register("query")}/>
             </form>
