@@ -76,20 +76,25 @@ export function Home () {
                 <input type="text" placeholder="Buscar conteúdo" {...register("query")}/>
             </form>
             <article>
-                {search.map(issue => {
-                    const title = issue.title
-                    
-                    const createdAt = new Date(issue.created_at).getTime() //passando pra  milisegundos
-                    const date = new Date(createdAt)
+                {search.length !== 0 ?
+                    search.map(issue => {
+                        const title = issue.title
+                        
+                        const createdAt = new Date(issue.created_at).getTime() //passando pra  milisegundos
+                        const date = new Date(createdAt)
 
 
-                    const body = issue.body
-                    const number = issue.number
+                        const body = issue.body
+                        const number = issue.number
 
-                    return (
-                        <Publication key={number} title={title} createdAt={date} body={body} number={number}/>
-                    )
-                })}         
+                        return (
+                            <Publication key={number} title={title} createdAt={date} body={body} number={number}/>
+                        )
+                    })
+                    :
+                    <h2>Este repositório não possui issues! </h2>
+                
+                }         
 
             </article>
         </HomeContainer>

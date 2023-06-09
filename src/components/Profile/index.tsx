@@ -16,7 +16,7 @@ interface User {
 }
 
 export function Profile () {
-    const {userName, repo} = useContext(GithubContext)
+    const {userName} = useContext(GithubContext)
 
     const [ dataUser, setDataUser] = useState<User>()
 
