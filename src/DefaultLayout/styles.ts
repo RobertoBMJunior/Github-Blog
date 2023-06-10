@@ -27,4 +27,38 @@ export const ContainerLayout = styled.main`
             text-decoration: none;
         }
     }
+
+
+    @media only screen and (max-width: 1550px) {
+
+        footer{
+            padding: 1rem 10rem ;
+        }
+    }
+
+    @media only screen and (max-width: 1260px) {
+        footer{
+            padding: 1rem 5rem ;
+        }
+    }
+
+    @media only screen and (max-width: 1100px) {
+        footer{
+            padding: 1rem 2rem ;
+        }
+
+    }
+
+    @media only screen and (max-width: 530px) {
+        
+        footer{
+            justify-content: center;
+
+            
+        }
+
+        &>footer span {
+            display: none;
+        }
+    }
 `

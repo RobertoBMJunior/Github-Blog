@@ -4,7 +4,7 @@ export const HomeContainer = styled.article`
     padding: 0 18rem 3rem;
 
     form{
-        margin: 4.5em 0 3rem;
+        margin: 4.5em 0 1.5rem;
 
         &>div{
             display: flex;
@@ -42,6 +42,14 @@ export const HomeContainer = styled.article`
                 color: ${props => props.theme["base-label"]}
             }
         }
+
+        &>footer{
+            background-color: transparent;
+            text-align: left;
+            padding: 0;
+
+            margin-top: 0.75rem;
+        }
     }
 
     article{
@@ -49,5 +57,32 @@ export const HomeContainer = styled.article`
         gap: 2rem;
 
         flex-wrap: wrap;
+
+        h2{
+            width: 100%;
+            text-align: center;
+        }
+    }
+
+    @media only screen and (max-width: 1550px) {
+        padding: 0 10rem 3rem;
+    }
+
+    @media only screen and (max-width: 1260px) {
+        padding: 0 5rem 3rem;
+    }
+
+    @media only screen and (max-width: 1100px) {
+        padding: 0 2rem 3rem;
+    }
+
+    @media only screen and (max-width: 530px) {
+        &>form footer{
+            margin: 2rem 0;
+        }
+    }
+
+    @media only screen and (max-width: 450px) {
+        padding: 0 1rem 3rem;
     }
 `

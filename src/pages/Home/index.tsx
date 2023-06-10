@@ -74,6 +74,9 @@ export function Home () {
                     <span>{`${search.length == null || search.length == undefined ? 0 : search.length} issues`}</span>
                 </div>
                 <input type="text" placeholder="Buscar conteúdo" {...register("query")}/>
+                <footer>
+                    *A API do GitHub possui um limite de 10 requisições por minuto, se fizer mais de 10 buscas por minuto a aplicação irá travar. Caso isso aconteça, espere 1 minuto e recarregue a página.
+                </footer>
             </form>
             <article>
                 {search.length !== 0 ?

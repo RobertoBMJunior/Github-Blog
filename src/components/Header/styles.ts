@@ -14,4 +14,34 @@ export const HeaderContainer = styled.header`
         margin-bottom:  70px;
     }
 
+    @media only screen and (max-width: 1100px) {
+        img:first-child, img:last-child{
+            width: 200px;
+        }   
+    }
+
+    @media only screen and (max-width: 600px) {
+        justify-content: center;
+
+        img:nth-child(2) {
+            width: 90px;
+        }
+
+        img:first-child, img:last-child{
+            width: 150px;
+        }
+    }
+
+    @media only screen and (max-width: 400px) {
+        justify-content: center;
+
+        img:nth-child(2) {
+            width: 80px;
+        }
+
+        img:first-child, img:last-child{
+            width: 100px;
+        }
+    }
+
 `

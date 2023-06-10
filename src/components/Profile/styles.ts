@@ -2,7 +2,8 @@ import styled from "styled-components";
 
 export const ProfileContainer = styled.div`
     width: 100%;
-    min-height: 212px;
+    // min-height: 212px;
+    height: auto;
     padding: 2rem;
     margin-top: -5.5rem;
 
@@ -11,10 +12,12 @@ export const ProfileContainer = styled.div`
     border-radius: 10px;
 
     display: flex;
+    align-items: flex-start;
     gap: 2rem;
 
     img{
         width: 148px;
+        heigth: 148px;
         border-radius: 8px;
     }
 
@@ -57,9 +60,9 @@ export const ProfileContainer = styled.div`
             display: flex;
             justify-content: space-between;
             gap: 1rem;
-            align-items: center;
+            align-items: flex-end;
             margin-top: auto;
-    
+
             div{
                 display: flex;
                 align-items: center;
@@ -84,25 +87,54 @@ export const ProfileContainer = styled.div`
                 border: none;
                 cursor: pointer;
             }
-
-
-            
-            form{
-                display: flex;
-                flex-direction: column;
-                margin-top: -2rem;
-
-                input{
-                    wdith: 400px;
-                    color: ${props => props.theme["base-text"]};
-                }
-
-                button{
-                    color: ${props => props.theme["blue"]};
-                }
-            }
           
         }
     }
 
+
+    @media only screen and (max-width: 1100px) {
+        .informations {
+            align-items: flex-end;
+
+            article{
+                display: flex;
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+        }
+    }
+
+    @media only screen and (max-width: 720px) {
+        // height: 270px;
+
+        img{
+            width: 90px;
+        }
+
+        .informations{
+            flex-direction: column;
+            align-items: flex-start !important;
+        }
+
+        .name_and_link h1{
+            font-size: 1rem !important; 
+        }
+    }    
+
+    @media only screen and (max-width: 530px) {
+        height: auto;
+        flex-direction: column;
+        gap: 0.5rem;
+
+        img{
+            align-self: center;
+        }
+
+        // font-size: 0.85rem;
+
+        // .swap{
+        //     font-size: 0.85rem;
+        // }
+    }
 `

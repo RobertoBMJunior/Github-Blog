@@ -37,4 +37,16 @@ export const PublicationContainer = styled.section`
             flex-direction: column;
         }
     }
+
+    @media only screen and (max-width: 450px) {
+        padding: 1.5rem;
+        font-size: 0.9rem;
+
+        width: 200px;
+        flex: 0;
+
+        &>header h1{
+            font-size: 1rem;
+        }
+    }
 `

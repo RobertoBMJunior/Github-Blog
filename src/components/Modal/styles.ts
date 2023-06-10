@@ -9,7 +9,7 @@ export const Overlay = styled(Dialog.Overlay)`
 `
 
 export const Content = styled(Dialog.Content)`
-    min-width: 32rem;
+    width: 32rem;
     background-color: ${props => props.theme["base-background"]};
     box-shadow: 0px 4px 32px rgba(0, 0, 0, 0.8);
     border-radius: 6px;
@@ -69,50 +69,53 @@ export const Content = styled(Dialog.Content)`
 
         }
 
-        .userRepo{
+    }
+
+
+    .userRepo{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.75rem;
+
+        .profile{
             display: flex;
-            flex-direction: column;
+            gap: 0.5rem;
             align-items: center;
-            gap: 0.75rem;
 
-            .profile{
-                display: flex;
-                gap: 0.5rem;
-                align-items: center;
-
-                img{
-                    width: 50px;
-                    border-radius: 100%;;
-                }
-            }
-
-            .scrollArea {
-                width: 300px;
-                height: 225px;
-                border-radius: 4px;
-                overflow-y: auto;
-                background-color: transparent;
-    
-                display: flex;
-                flex-direction: column;
-                gap: 0.5rem;
-    
-                padding: 1rem;
-                text-align: center;
-                align-self: center;
-    
-                span{
-                    border-top: 1px solid ${props => props.theme["base-label"]};
-                    
-                }
+            img{
+                width: 50px;
+                border-radius: 100%;;
             }
         }
 
+        .scrollArea {
+            width: 300px;
+            height: 225px;
+            border-radius: 4px;
+            overflow-y: auto;
+            background-color: transparent;
 
-        
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
 
+            padding: 1rem;
+            text-align: center;
+            align-self: center;
 
+            span{
+                border-top: 1px solid ${props => props.theme["base-label"]};
+                
+            }
+        }
+
+        &>footer{
+            width: 100%;
+        }
     }
+
+
 
     @media only screen and (max-width: 550px) {
         min-width: 28rem;
