@@ -12,5 +12,7 @@ export const ButtonRepoContainer = styled.button`
         background-color: ${props => props.theme["base-border"]} 
     }
 
-    
+    @media only screen and (max-width: 365px) {
+        width: 200px;
+    }
 `

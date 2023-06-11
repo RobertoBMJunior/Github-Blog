@@ -27,7 +27,7 @@ export const HomeContainer = styled.article`
             padding: 0.75rem 1rem;
             border-radius: 6px;
             background-color: ${props => props.theme["base-input"]};
-            color: ${props => props.theme["blue"]};
+            color: ${props => props.theme["base-text"]};
 
             border: 1px solid ${props => props.theme["base-border"]};
         }
@@ -47,14 +47,17 @@ export const HomeContainer = styled.article`
             background-color: transparent;
             text-align: left;
             padding: 0;
+            height: auto;
 
             margin-top: 0.75rem;
+            font-size: 0.875rem;
         }
     }
 
     article{
         display: flex;
         gap: 2rem;
+        justify-content: center;
 
         flex-wrap: wrap;
 
@@ -76,13 +79,25 @@ export const HomeContainer = styled.article`
         padding: 0 2rem 3rem;
     }
 
-    @media only screen and (max-width: 530px) {
-        &>form footer{
-            margin: 2rem 0;
-        }
-    }
+    // @media only screen and (max-width: 530px) {
+    //     &>form footer{
+    //         margin: 2rem 0;
+    //     }
+    // }
 
     @media only screen and (max-width: 450px) {
         padding: 0 1rem 3rem;
+    }
+
+    // @media only screen and (max-width: 410px) {
+    //     &>form footer{
+    //         margin: 2.6rem 0;
+    //     }
+    // }
+
+    @media only screen and (max-width: 320px) {
+        &>form footer{
+            margin: 0.7rem 0;
+        }
     }
 `

@@ -43,6 +43,7 @@ export const HeaderPostContainer = styled.nav`
         display: flex;
         gap: 1.5rem;
         align-items: center;
+        flex-wrap: wrap;
 
         div{
             display: flex;
@@ -53,6 +54,28 @@ export const HeaderPostContainer = styled.nav`
             svg{
                 color: ${props => props.theme["base-label"]}
             }
+        }
+    }
+
+    @media only screen and (max-width: 650px) {
+        padding: 2rem 1rem;;
+
+        .informations{
+            gap: 0.5rem;
+        }
+    }
+
+    @media only screen and (max-width: 365px) {
+        &>header a{
+            font-size: 0.875rem;
+        }
+
+        &>h2{
+            font-size: 1.25rem;
+        }
+
+        .informations{
+            gap: 0.5rem;
         }
     }
 `

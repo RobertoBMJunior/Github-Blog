@@ -42,11 +42,15 @@ export const PublicationContainer = styled.section`
         padding: 1.5rem;
         font-size: 0.9rem;
 
-        width: 200px;
+        min-width: 300px;
         flex: 0;
 
         &>header h1{
             font-size: 1rem;
         }
+    }
+
+    @media only screen and (max-width: 320px) {
+        min-width: 260px;
     }
 `

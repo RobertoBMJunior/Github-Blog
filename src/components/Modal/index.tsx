@@ -85,7 +85,7 @@ export function Modal() {
                     </button>
                 </CloseButton>
                 <Title>Trocar Usuário/Repositório</Title>
-                <Dialog.Description>
+                <Dialog.Description className='description'>
                     Insira o nome de algum usuário do Github. Em seguida, escolha o repositório para visualizar as issues.
                 </Dialog.Description>
                 <form action="" onSubmit={handleSubmit(handleFetch)}>
@@ -94,7 +94,7 @@ export function Modal() {
                             {/* {repositories.length > 0 ? 
                                 <input type="text" placeholder="Nome do repositório." {...register("repo")} list='repositories'/>
                             : null} */}
-                            <button>Buscar usuário</button>
+                            <button>Buscar</button>
                         </div>
                         
                         {userRepo.reposit.length > 0 ?

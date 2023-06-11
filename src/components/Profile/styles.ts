@@ -108,6 +108,10 @@ export const ProfileContainer = styled.div`
     @media only screen and (max-width: 720px) {
         // height: 270px;
 
+        .about{
+            height: auto;
+        }
+
         img{
             width: 90px;
         }
@@ -115,6 +119,12 @@ export const ProfileContainer = styled.div`
         .informations{
             flex-direction: column;
             align-items: flex-start !important;
+
+            article{
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: flex-start;
+            }
         }
 
         .name_and_link h1{
@@ -122,14 +132,48 @@ export const ProfileContainer = styled.div`
         }
     }    
 
+    @media only screen and (max-width: 600px) {
+        // height: 270px;
+    }
+
     @media only screen and (max-width: 530px) {
-        height: auto;
+        padding: 1rem;
+        // height: 350px;
         flex-direction: column;
         gap: 0.5rem;
 
         img{
             align-self: center;
         }
+
+        .about{
+            align-items: center;
+            height: auto;
+
+            .name_and_link{
+                flex-direction: column;
+            }
+
+            &>p{
+                text-align: center;
+            }
+
+            .informations {
+                align-items: center !important;
+
+                article{
+                    flex-direction: row;
+                    flex-wrap: wrap;
+                    justify-content: center;
+                }
+            }
+        }
+
+        
+        // @media only screen and (max-width: 450px) {
+        //     height: 370px;
+
+        // }
 
         // font-size: 0.85rem;
 

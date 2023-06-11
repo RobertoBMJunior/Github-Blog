@@ -112,30 +112,57 @@ export const Content = styled(Dialog.Content)`
 
         &>footer{
             width: 100%;
+            font-size: 0.875rem;
         }
     }
 
 
 
     @media only screen and (max-width: 550px) {
-        min-width: 28rem;
+        width: 28rem;
         padding: 3rem 1.5rem 2.5rem;
     }
 
     @media only screen and (max-width: 480px) {
-        min-width: 24rem;
+        width: 24rem;
     }
 
     @media only screen and (max-width: 400px) {
-        min-width: 22rem;
+        width: 22rem;
+        padding: 2rem 1rem 2rem;
+
+        .query input{
+            padding: 0.6rem !important;
+        }
+
+        .description{
+            display: none;
+        }
+
+        .userRepo h3 {
+            font-size: 1rem;
+        }
     }
 
     @media only screen and (max-width: 365px) {
-        min-width: 20rem;
+        width: 20rem;
+
+        .query{
+            flex-direction: column;
+
+            button{
+                padding: 0.5rem !important;
+            }
+        }
+
+        .scrollArea {
+            width: 250px;
+            align-items: center;
+        }
     }
 
     @media only screen and (max-width: 330px) {
-        min-width: 16rem;
+        width: 16rem;
     }
 
 `
@@ -155,6 +182,10 @@ export const Title = styled(Dialog.Title)`
     font-weight: 700;
 
     color: ${props => props.theme["base-title"]};
+
+    @media only screen and (max-width: 400px) {
+        font-size: 1.1rem;
+    }
 `
 
 export const RepoOptions = styled(RadioGroup.Item)`
