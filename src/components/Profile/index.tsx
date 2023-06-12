@@ -1,6 +1,6 @@
 import { ProfileContainer } from "./styles";
 // import Avatar from '../../images/avatar.png'
-import { Buildings, FolderOpen, GithubLogo, Link, Swap, Users } from "@phosphor-icons/react";
+import { Buildings,GithubLogo, Link, Swap, Users } from "@phosphor-icons/react";
 import { useContext, useEffect, useState } from "react";
 import * as Dialog from '@radix-ui/react-dialog';
 import { Modal } from "../Modal";
@@ -20,26 +20,26 @@ export function Profile () {
 
     const [ dataUser, setDataUser] = useState<User>()
 
-    const urlUsers = `https://api.github.com/users/${userName}`
+    useEffect(()=> {
+        const urlUsers = `https://api.github.com/users/${userName}`
 
-    async function getData() {
-        const response = await fetch(urlUsers)
+        async function getData() {
+            const response = await fetch(urlUsers)
 
-        const data = await response.json()
+            const data = await response.json()
 
-        const dados = {
-            nome: data.name,
-            bio: data.bio,
-            login: data.login,
-            company: data.company,
-            followers: data.followers,
-            avatarUrl: data.avatar_url,
+            const dados = {
+                nome: data.name,
+                bio: data.bio,
+                login: data.login,
+                company: data.company,
+                followers: data.followers,
+                avatarUrl: data.avatar_url,
+            }
+
+            setDataUser(dados)
         }
 
-        setDataUser(dados)
-    }
-
-    useEffect(()=> {
         getData()
     },[userName])
 

@@ -4,12 +4,11 @@ import { X } from '@phosphor-icons/react';
 import * as z from 'zod'
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from 'react-hook-form'
-import { useRef, useState } from 'react';
+import { useState } from 'react';
 import { ButtonRepo } from '../ButtonRepo';
 
 const searchFormSchema = z.object({
     user: z.string(),
-    // repo: z.string(),
 })
 
 type SearchFormInputs = z.infer<typeof searchFormSchema>
@@ -21,7 +20,6 @@ interface UserRepo {
 }
 
 export function Modal() {
-    // const {userName} = useContext(GithubContext)
     const [userRepo, setUserRepo] = useState<UserRepo>({
         avatar_url: '',
         name: '',
@@ -36,10 +34,8 @@ export function Modal() {
         resolver: zodResolver(searchFormSchema)
     })
 
-    const buttonRef = useRef()
-
     function closeModal () {
-        buttonRef.current.click()
+        document.getElementById('teste')?.click()
     }
 
     async function handleFetch(data: SearchFormInputs) {
@@ -57,7 +53,7 @@ export function Modal() {
             const newUser = {
                 avatar_url: repos[0].owner.avatar_url,
                 name: data.user,
-                reposit: repos.map((repo)=> {
+                reposit: repos.map((repo: {name: string})=> {
                     return repo.name
                 })
             }
@@ -79,7 +75,7 @@ export function Modal() {
         <Dialog.Portal>
             <Overlay/>
             <Content>
-                <CloseButton  asChild  ref={buttonRef}>
+                <CloseButton  asChild id='teste'>
                     <button >
                         <X size={24}/>
                     </button>
