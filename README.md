@@ -9,8 +9,9 @@
 <h3> Pra quem tiver interesse em baixar e rodar o projeto, use o comando: npm run dev </h3>
 <h3> Visualizar a aplicação: https://github-blog-kappa-ten.vercel.app/</h3>
 
-![github-blog](https://github.com/RobertoBMJunior/Github-Blog/assets/121899636/5d1d9b18-f744-4c80-a04d-c80739ec8d0d)
+![GithubBlog-home](https://github.com/RobertoBMJunior/Github-Blog/assets/121899636/88023abd-0843-4e4d-93a1-77a001585625)
 ![image](https://github.com/RobertoBMJunior/Github-Blog/assets/121899636/68ad627c-86db-4c9b-9790-73fa9e768384)
 ![image](https://github.com/RobertoBMJunior/Github-Blog/assets/121899636/0685ee5f-6112-42fc-a705-bf2fbea4b3b4)
+
 
 
